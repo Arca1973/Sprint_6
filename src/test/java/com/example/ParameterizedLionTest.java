@@ -9,11 +9,9 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
+
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
@@ -44,10 +42,13 @@ public class ParameterizedLionTest {
 
     @Test
     public void parameterizedTestForManePresence() throws Exception {
-
         Lion lion = new Lion(sex, mockFeline);
+        assertEquals(expectedMane, lion.doesHaveMane()); // Проверяем наличие гривы согласно полу
+    }
 
-        assertEquals(expectedMane, lion.doesHaveMane());
-        assertEquals(1, lion.getKittens());
+    @Test
+    public void parameterizedTestForKittensCount() throws Exception {
+        Lion lion = new Lion(sex, mockFeline);
+        assertEquals(1, lion.getKittens()); // Проверяем количество котят
     }
 }

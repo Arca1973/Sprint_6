@@ -1,16 +1,17 @@
 package com.example;
 
+import org.junit.Before;
 import org.junit.Test;
+
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -19,30 +20,38 @@ public class LionTests {
     @Mock
     private Feline mockFeline;
 
+    @Before
+    public void setup() {
+        when(mockFeline.getKittens()).thenReturn(1);
+    }
+
     @Test
     public void testMaleHasMane() throws Exception {
-
-        when(mockFeline.getKittens()).thenReturn(3);
-
         Lion lion = new Lion("Самец", mockFeline);
-
         assertTrue(lion.doesHaveMane());
-        assertEquals(3, lion.getKittens());
+    }
+
+    @Test
+    public void testMaleGetKittens() throws Exception {
+        Lion lion = new Lion("Самец", mockFeline);
+        assertEquals(1, lion.getKittens());
     }
 
     @Test
     public void testFemaleDoesNotHaveMane() throws Exception {
-
-        when(mockFeline.getKittens()).thenReturn(0);
-
         Lion lion = new Lion("Самка", mockFeline);
         assertFalse(lion.doesHaveMane());
-        assertEquals(0, lion.getKittens());
+    }
+
+    @Test
+    public void testFemaleGetKittens() throws Exception {
+        Lion lion = new Lion("Самка", mockFeline);
+        assertEquals(1, lion.getKittens());
     }
 
     @Test(expected = Exception.class)
     public void testInvalidSexThrowsException() throws Exception {
-        new Lion("Другое", mockFeline); // Ожидается исключение
+        new Lion("Другое", mockFeline);
     }
 
     @Test

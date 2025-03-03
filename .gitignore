@@ -18,7 +18,7 @@
 
 # ignore target folder exclude Jacoco reports folder
 /target
-!/target/site/jacoco/
+!./target/site/jacoco/.
 
 
 # Package Files #

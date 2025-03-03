@@ -20,7 +20,7 @@ public class CatTests {
     public void testGetSound() {
 
         Cat cat = new Cat(mockFeline);
-        assertEquals("Мяу", cat.getSound());
+        assertEquals("Ожидается, что кошка должна мяукать \"Мяу\", но получено другое значение.", "Мяу", cat.getSound());
     }
 
     @Test

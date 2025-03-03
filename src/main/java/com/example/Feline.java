@@ -6,7 +6,7 @@ public class Feline extends Animal implements Predator {
 
     private Animal animal;
 
-    // Добавляем метод setAnimal для инъекций
+
     public void setAnimal(Animal animal) {
         this.animal = animal;
     }
